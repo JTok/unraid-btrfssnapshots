@@ -58,26 +58,9 @@ timestamp_files="1"
 # default is 0. set this to 1 to compare files after copy and run rsync in the event of failure. could add significant amount of time depending on the size of vms.
 compare_files="0"
 
-# default is 1. set to 0 if you would like to skip backing up xml configuration files.
-backup_xml="1"
-
-# default is 1. set to 0 if you would like to skip backing up vdisks. setting this to 0 will automatically disable compression.
-backup_vdisks="1"
-
-# default is 0. set this to 1 if you would like to start a vm after it has successfully been backed up. will override set_vm_to_original_state when set to 1.
-start_vm_after_backup="0"
-
-# default is 0. set this to 1 if you would like to start a vm after it has failed to have been backed up. will override set_vm_to_original_state when set to 1.
-start_vm_after_failure="0"
-
 # *CURRENTLY UNUSED* default is 1. set this to 0 if you would like to perform a dry-run backup.
 actually_copy_files="1"
 
-# default is 20. set this to the number of times you would like to check if a clean shutdown of a vm has been successfull.
-clean_shutdown_checks="20"
-
-# default is 30. set this to the number of seconds to wait in between checks to see if a clean shutdown has been successfull.
-seconds_to_wait="30"
 
 ################################################## script variables end #########################################################
 
@@ -121,6 +104,31 @@ else
 
 fi
 
+# check to see if the snapshot_location specified by the user exists. if yes, continue if no, exit. if exists check if writable, if yes continue, if not exit. if input invalid, exit.
+if [ -d "$snapshot_location" ]; then
+
+	echo "information: snapshot_location is $snapshot_location. this location exists. continuing."
+
+	# if snapshot_location does exist check to see if the snapshot_location is writable.
+	if [ -w "$snapshot_location" ]; then
+
+		echo "information: snapshot_location is $snapshot_location. this location is writable. continuing."
+
+	else
+
+		echo "failure: snapshot_location is $snapshot_location. this location is not writable. exiting."
+
+		exit 1
+
+	fi
+
+else
+
+	echo "failure: snapshot_location is $snapshot_location. this location does not exist. exiting."
+
+	exit 1
+
+fi
 
 # check to see if the backup_location specified by the user exists. if yes, continue if no, exit. if exists check if writable, if yes continue, if not exit. if input invalid, exit.
 if [ -d "$backup_location" ]; then
@@ -149,44 +157,22 @@ else
 fi
 
 
-# check to see if vm should be killed if clean shutdown fails. if yes, continue if no, continue. if input invalid, exit.
-if [[ "$kill_vm_if_cant_shutdown" =~ ^(0|1)$ ]]; then
+# check to see if backup location is a btrfs volume. if yes, continue if no, continue. if input invalid, exit.
+if [[ "$backup_btrfs_volume" =~ ^(0|1)$ ]]; then
 
-	if [ "$kill_vm_if_cant_shutdown" -eq 0 ]; then
+	if [ "$backup_btrfs_volume" -eq 0 ]; then
 
-		echo "warning: kill_vm_if_cant_shutdown is $kill_vm_if_cant_shutdown. vms will not be forced to shutdown if a clean shutdown can not be detected."
+		echo "warning: backup_btrfs_volume is $backup_btrfs_volume. vms will not be forced to shutdown if a clean shutdown can not be detected."
 
-	elif [ "$kill_vm_if_cant_shutdown" -eq 1 ]; then
+	elif [ "$backup_btrfs_volume" -eq 1 ]; then
 
-		echo "information: kill_vm_if_cant_shutdown is $kill_vm_if_cant_shutdown. vms will be forced to shutdown if a clean shutdown can not be detected."
-
-	fi
-
-else
-
-	echo "failure: kill_vm_if_cant_shutdown is $kill_vm_if_cant_shutdown. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
-
-	exit 1
-
-fi
-
-
-# check to see if vm should be set to original state after backup. if yes, continue if no, continue. if input invalid, exit.
-if [[ "$set_vm_to_original_state" =~ ^(0|1)$ ]]; then
-
-	if [ "$set_vm_to_original_state" -eq 0 ]; then
-
-		echo "warning: set_vm_to_original_state is $set_vm_to_original_state. vms will not be set to their original state after backup."
-
-	elif [ "$set_vm_to_original_state" -eq 1 ]; then
-
-		echo "information: set_vm_to_original_state is $set_vm_to_original_state. vms will be set to their original state after backup."
+		echo "information: backup_btrfs_volume is $backup_btrfs_volume. vms will be forced to shutdown if a clean shutdown can not be detected."
 
 	fi
 
 else
 
-	echo "failure: set_vm_to_original_state is $set_vm_to_original_state. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
+	echo "failure: backup_btrfs_volume is $backup_btrfs_volume. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
 	exit 1
 
@@ -332,96 +318,6 @@ else
 fi
 
 
-# check to see if xml should be backed up. if yes, continue if no, continue. if input invalid, exit.
-if [[ "$backup_xml" =~ ^(0|1)$ ]]; then
-
-	if [ "$backup_xml" -eq 0 ]; then
-
-		echo "warning: backup_xml is $backup_xml. vms will not have their xml configurations backed up."
-
-	elif [ "$backup_xml" -eq 1 ]; then
-
-		echo "information: backup_xml is $backup_xml. vms will have their xml configurations backed up."
-
-	fi
-
-else
-
-	echo "failure: backup_xml is $backup_xml. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
-
-	exit 1
-
-fi
-
-
-# check to see if vdisks should be backed up. if yes, continue if no, continue. if input invalid, exit.
-if [[ "$backup_vdisks" =~ ^(0|1)$ ]]; then
-
-	if [ "$backup_vdisks" -eq 0 ]; then
-
-		echo "warning: backup_vdisks is $backup_vdisks. vms will not have their vdisks backed up. compression will be set to off."
-
-		compress_backups="0"
-
-	elif [ "$backup_vdisks" -eq 1 ]; then
-
-		echo "information: backup_vdisks is $backup_vdisks. vms will have their vdisks backed up."
-
-	fi
-
-else
-
-	echo "failure: backup_vdisks is $backup_vdisks. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
-
-	exit 1
-
-fi
-
-
-# check to see if vms should be started after a successfull backup. if yes, continue if no, continue. if input invalid, exit.
-if [[ "$start_vm_after_backup" =~ ^(0|1)$ ]]; then
-
-	if [ "$start_vm_after_backup" -eq 0 ]; then
-
-		echo "warning: start_vm_after_backup is $start_vm_after_backup. vms will not be started following successfull backup."
-
-	elif [ "$start_vm_after_backup" -eq 1 ]; then
-
-		echo "information: start_vm_after_backup is $start_vm_after_backup vms will be started following a successfull backup."
-
-	fi
-
-else
-
-	echo "failure: start_vm_after_backup is $start_vm_after_backup. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
-
-	exit 1
-
-fi
-
-
-# check to see if vms should be started after an unsuccessfull backup. if yes, continue if no, continue. if input invalid, exit.
-if [[ "$start_vm_after_failure" =~ ^(0|1)$ ]]; then
-
-	if [ "$start_vm_after_failure" -eq 0 ]; then
-
-		echo "warning: start_vm_after_failure is $start_vm_after_failure. vms will not be started following an unsuccessfull backup."
-
-	elif [ "$start_vm_after_failure" -eq 1 ]; then
-
-		echo "information: start_vm_after_failure is $start_vm_after_failure. vms will be started following an unsuccessfull backup."
-
-	fi
-
-else
-
-	echo "failure: start_vm_after_failure is $start_vm_after_failure. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
-
-	exit 1
-
-fi
-
-
 # validate the actually_copy_files option. if yes the rsync command line option for dry-run. if input invalid, exit.
 if [[ "$actually_copy_files" =~ ^(0|1)$ ]]; then
 
@@ -441,58 +337,6 @@ if [[ "$actually_copy_files" =~ ^(0|1)$ ]]; then
 else
 
 	echo "failure: actually_copy_files is $actually_copy_files. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
-
-	exit 1
-
-fi
-
-
-# check to see how many times vm's state should be checked for shutdown. if yes, continue if no, continue if input invalid, exit.
-if [[ "$clean_shutdown_checks" =~ ^[0-9]+$ ]]; then
-
-	if [ "$clean_shutdown_checks" -lt 5 ]; then
-
-		echo "warning: clean_shutdown_checks is $clean_shutdown_checks. this is potentially an insufficient number of shutdown checks."
-
-	elif [ "$clean_shutdown_checks" -gt 50 ]; then
-
-		echo "warning: clean_shutdown_checks is $clean_shutdown_checks. this is a vast number of shutdown checks."
-
-	elif [ "$clean_shutdown_checks" -ge 5 -a "$clean_shutdown_checks" -le 50 ]; then
-
-		echo "information: clean_shutdown_checks is $clean_shutdown_checks. this is probably a sufficient number of shutdown checks."
-
-	fi
-
-else
-
-	echo "failure: clean_shutdown_checks is $clean_shutdown_checks. this is not a valid format. expecting a number between [0 - 1000000]. exiting."
-
-	exit 1
-
-fi
-
-
-# check to see how many seconds to wait between vm shutdown checks. messages to user only. if input invalid, exit.
-if [[ "$seconds_to_wait" =~ ^[0-9]+$ ]]; then
-
-	if [ "$seconds_to_wait" -lt 30 ]; then
-
-		echo "warning: seconds_to_wait is $seconds_to_wait. this is potentially an insufficient number of seconds to wait between shutdown checks."
-
-	elif [ "$seconds_to_wait" -gt 600 ]; then
-
-		echo "warning: seconds_to_wait is seconds_to_wait. this is a vast number of seconds to wait between shutdown checks."
-
-	elif [ "$seconds_to_wait" -ge 30 -a "$seconds_to_wait" -le 600 ]; then
-
-		echo "information: seconds_to_wait is $seconds_to_wait. this is probably a sufficent number of seconds to wait between shutdown checks."
-
-	fi
-
-else
-
-	echo "failure: seconds_to_wait is $seconds_to_wait. this is not a valid format. expecting a number between [0 - 1000000]. exiting."
 
 	exit 1
 
