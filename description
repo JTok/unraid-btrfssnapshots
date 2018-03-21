@@ -1,2 +1,2 @@
-# unraid-btrfssnapshots v1.0.0 - 2018/03/17
-a script for making btrfs subvolume snapshots.
+# unraid-btrfssnapshots v1.0.0 - 2018/03/21
+a script for taking btrfs subvolume snapshots.
