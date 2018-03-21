@@ -1,0 +1,6 @@
+## To-Do List ##
+#  - take btrfs snapshots
+#  - backup snapshots to storage array using cp or btrfs send/receive
+#  - Online/Offline snapshots for VMs
+#  - Multiple snapshots/versioning
+#  - option to backup xml files

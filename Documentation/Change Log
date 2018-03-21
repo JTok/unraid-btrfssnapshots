@@ -1,0 +1,7 @@
+## Change Log ##
+
+# v1.0.0 - 2018/03/21
+#  initial release
+#
+#  feature set based loosly off my work on unraid-vmbackup: https://github.com/JTok/unraid-vmbackup
+#  - BTRFS STUFF
