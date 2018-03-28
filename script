@@ -128,10 +128,11 @@ only_send_error_notifications="0"
 # WARNING: only change the btrfs variables if you truly understand what you are doing.
 
 # default is 0. set to 1 to enable btrfs cache volume snapshots. VMs must already be in a btrfs subvolume for this to work.
-enable_btrfs_snapshots="0"
+enable_btrfs_snapshots="1"
 
 # set to vm subvolume that snapshot should be taken of.
-btrfs_subvolume="/mnt/user/domains/"
+# NOTE: this cannot use the /mnt/user/ path or the snapshot will fail. it must be set directly to a btrfs disk such as /mnt/cache or /mnt/diskX.
+btrfs_subvolume="/mnt/cache/domains/"
 
 
 ################################################## script variables end #########################################################
@@ -996,7 +997,7 @@ else
 
 	echo "$(date '+%Y-%m-%d %H:%M') failure: enable_btrfs_snapshots is $enable_btrfs_snapshots. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
 
-	/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "unRAID VM Backup script failed" -i "alert" -m `date '+%Y-m%-d %H:%M'` " failure: enable_btrfs_snapshots is $enable_btrfs_snapshots. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
+	/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "unRAID VM Backup script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: enable_btrfs_snapshots is $enable_btrfs_snapshots. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
 	exit 1
 
@@ -1014,7 +1015,48 @@ echo "$(date '+%Y-%m-%d %H:%M') information: started attempt to backup $vms_to_b
 IFS=$'\n'
 
 
-# check to see if the subvolume is a btrfs subvolume
+
+
+
+
+
+# remove the trailing slash from btrfs subvolume path if it exists.
+btrfs_subvolume="/mnt/user/domains"
+
+# set this to force the for loop to split on new lines and not spaces.
+IFS=$'\n'
+
+# function to see if the subvolume is a btrfs subvolume
+is_btrfs_subvolume() {
+    local _dir=$1
+    [ "$(stat -f --format="%T" "$_dir")" == "btrfs" ] || return 1
+    inode="$(stat --format="%i" "$_dir")"
+    case "$inode" in
+        2|256)
+        echo "0"
+            return 0;;
+        *)
+        echo "1"
+            return 1;;
+    esac
+}
+
+is_btrfs_subvolume $btrfs_subvolume
+
+#$btrfs_test_result >> testresult.txt
+
+exit 0
+
+
+
+
+
+
+
+
+
+
+# function to see if the subvolume is a btrfs subvolume
 is_btrfs_subvolume() {
     local _dir=$1
     [ "$(stat -f --format="%T" "$_dir")" == "btrfs" ] || return 1
@@ -1027,7 +1069,11 @@ is_btrfs_subvolume() {
     esac
 }
 
-btrfs_test_result=is_btrfs_subvolume($btrfs_subvolume)
+btrfs_test_result=is_btrfs_subvolume $btrfs_subvolume
+
+echo $btrfs_test_result >> testresult.txt
+
+exit 0
 
 
 # loop through the vms in the list and try and back up thier associated xml configurations and vdisk(s).
