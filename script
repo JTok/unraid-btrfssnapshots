@@ -149,7 +149,7 @@ elif [ ! "$me" == "$official_script_name" ]; then
 
 	echo "$(date '+%Y-%m-%d %H:%M') failure: official_script_name is $official_script_name. script name is invalid. exiting."
 
-	/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: official_script_name is $official_script_name. script name is invalid. exiting."
+	/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: official_script_name is $official_script_name. script name is invalid. exiting."
 
 	exit 1
 
@@ -167,7 +167,7 @@ if [[ "$enabled" =~ ^(0|1)$ ]]; then
 
 		echo "$(date '+%Y-%m-%d %H:%M') failure: enabled is $enabled. script is disabled. exiting."
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: enabled is $enabled. script is disabled. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: enabled is $enabled. script is disabled. exiting."
 
 		exit 1
 
@@ -177,7 +177,7 @@ else
 
 	echo "$(date '+%Y-%m-%d %H:%M') failure: enabled is $enabled. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
-	/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: enabled is $enabled. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
+	/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: enabled is $enabled. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
 	exit 1
 
@@ -201,7 +201,7 @@ if [ -d "$backup_location" ]; then
 
 		echo "$(date '+%Y-%m-%d %H:%M') failure: backup_location is $backup_location. this location is not writable. exiting."
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: backup_location is $backup_location. this location is not writable. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: backup_location is $backup_location. this location is not writable. exiting."
 
 		exit 1
 
@@ -211,7 +211,7 @@ else
 
 	echo "$(date '+%Y-%m-%d %H:%M') failure: backup_location is $backup_location. this location does not exist. exiting."
 
-	/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: backup_location is $backup_location. this location does not exist. exiting."
+	/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: backup_location is $backup_location. this location does not exist. exiting."
 
 	exit 1
 
@@ -238,7 +238,7 @@ else
 
 	echo "$(date '+%Y-%m-%d %H:%M') failure: timestamp_files is $timestamp_files. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
-	/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: timestamp_files is $timestamp_files. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
+	/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: timestamp_files is $timestamp_files. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
 	exit 1
 
@@ -282,7 +282,7 @@ if [ -d "$backup_location/$log_file_subfolder" ]; then
 
 		echo "$(date '+%Y-%m-%d %H:%M') failure: log_file_subfolder is $backup_location/$log_file_subfolder. this location is not writable. exiting."
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: log_file_subfolder is $backup_location/$log_file_subfolder. this location is not writable. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: log_file_subfolder is $backup_location/$log_file_subfolder. this location is not writable. exiting."
 
 		exit 1
 
@@ -292,7 +292,7 @@ else
 
 	echo "$(date '+%Y-%m-%d %H:%M') failure: log_file_subfolder is $backup_location/$log_file_subfolder. this location does not exist. exiting."
 
-	/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: log_file_subfolder is $backup_location/$log_file_subfolder. this location does not exist. exiting."
+	/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: log_file_subfolder is $backup_location/$log_file_subfolder. this location does not exist. exiting."
 
 	exit 1
 
@@ -304,7 +304,7 @@ errors="0"
 
 
 ### Logging Started ###
-echo "$(date '+%Y-%m-%d %H:%M')" " Start logging to log file."  | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+echo "$(date '+%Y-%m-%d %H:%M')" " Start logging to log file."  | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 
 #### logging and notifications ####
@@ -324,9 +324,9 @@ if [[ "$send_notifications" =~ ^(0|1)$ ]]; then
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: send_notifications is $send_notifications. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: send_notifications is $send_notifications. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
-	/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: send_notifications is $send_notifications. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
+	/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: send_notifications is $send_notifications. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
 	exit 1
 
@@ -347,9 +347,9 @@ if [[ "$only_send_error_notifications" =~ ^(0|1)$ ]]; then
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: only_send_error_notifications is $only_send_error_notifications. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: only_send_error_notifications is $only_send_error_notifications. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
-	/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: only_send_error_notifications is $only_send_error_notifications. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
+	/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: only_send_error_notifications is $only_send_error_notifications. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
 	exit 1
 
@@ -368,21 +368,21 @@ if [[ "$keep_log_file" =~ ^(0|1)$ ]]; then
 
 	if [ "$keep_log_file" -eq 0 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: keep_log_file is $keep_log_file. log files will not be kept." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: keep_log_file is $keep_log_file. log files will not be kept." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	elif  [ "$keep_log_file" -eq 1 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: keep_log_file is $keep_log_file. log files will be kept." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: keep_log_file is $keep_log_file. log files will be kept." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: keep_log_file is $keep_log_file. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: keep_log_file is $keep_log_file. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	if [ "$send_notifications" -eq 1 ]; then
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: keep_log_file is $keep_log_file. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: keep_log_file is $keep_log_file. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
 	fi
 
@@ -396,25 +396,25 @@ if [[ "$number_of_log_files_to_keep" =~ ^[0-9]+$ ]]; then
 
 	if [ "$number_of_log_files_to_keep" -eq 0 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: number_of_log_files_to_keep is $number_of_log_files_to_keep. an infinite number of log files will be kept. be sure to pay attention to how many log files there are." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: number_of_log_files_to_keep is $number_of_log_files_to_keep. an infinite number of log files will be kept. be sure to pay attention to how many log files there are." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	elif [ "$number_of_log_files_to_keep" -gt 40 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: number_of_log_files_to_keep is $number_of_log_files_to_keep. this is a lot of log files to keep." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: number_of_log_files_to_keep is $number_of_log_files_to_keep. this is a lot of log files to keep." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	elif [ "$number_of_log_files_to_keep" -ge 1 ] && [ "$number_of_log_files_to_keep" -le 40 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: number_of_log_files_to_keep is $number_of_log_files_to_keep. this is probably a sufficient number of log files to keep." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: number_of_log_files_to_keep is $number_of_log_files_to_keep. this is probably a sufficient number of log files to keep." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: number_of_log_files_to_keep is $number_of_log_files_to_keep. this is not a valid format. expecting a number between [0 - 1000000]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: number_of_log_files_to_keep is $number_of_log_files_to_keep. this is not a valid format. expecting a number between [0 - 1000000]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	if [ "$send_notifications" -eq 1 ]; then
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: number_of_log_files_to_keep is $number_of_log_files_to_keep. this is not a valid format. expecting a number between [0 - 1000000]. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: number_of_log_files_to_keep is $number_of_log_files_to_keep. this is not a valid format. expecting a number between [0 - 1000000]. exiting."
 
 	fi
 	
@@ -428,21 +428,21 @@ if [[ "$kill_vm_if_cant_shutdown" =~ ^(0|1)$ ]]; then
 
 	if [ "$kill_vm_if_cant_shutdown" -eq 0 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: kill_vm_if_cant_shutdown is $kill_vm_if_cant_shutdown. vms will not be forced to shutdown if a clean shutdown can not be detected." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: kill_vm_if_cant_shutdown is $kill_vm_if_cant_shutdown. vms will not be forced to shutdown if a clean shutdown can not be detected." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	elif [ "$kill_vm_if_cant_shutdown" -eq 1 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: kill_vm_if_cant_shutdown is $kill_vm_if_cant_shutdown. vms will be forced to shutdown if a clean shutdown can not be detected." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: kill_vm_if_cant_shutdown is $kill_vm_if_cant_shutdown. vms will be forced to shutdown if a clean shutdown can not be detected." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: kill_vm_if_cant_shutdown is $kill_vm_if_cant_shutdown. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: kill_vm_if_cant_shutdown is $kill_vm_if_cant_shutdown. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	if [ "$send_notifications" -eq 1 ];then
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: kill_vm_if_cant_shutdown is $kill_vm_if_cant_shutdown. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: kill_vm_if_cant_shutdown is $kill_vm_if_cant_shutdown. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
 	fi
 
@@ -456,21 +456,21 @@ if [[ "$set_vm_to_original_state" =~ ^(0|1)$ ]]; then
 
 	if [ "$set_vm_to_original_state" -eq 0 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: set_vm_to_original_state is $set_vm_to_original_state. vms will not be set to their original state after backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: set_vm_to_original_state is $set_vm_to_original_state. vms will not be set to their original state after backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	elif [ "$set_vm_to_original_state" -eq 1 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: set_vm_to_original_state is $set_vm_to_original_state. vms will be set to their original state after backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: set_vm_to_original_state is $set_vm_to_original_state. vms will be set to their original state after backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: set_vm_to_original_state is $set_vm_to_original_state. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: set_vm_to_original_state is $set_vm_to_original_state. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	if [ "$send_notifications" -eq 1 ];then
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: set_vm_to_original_state is $set_vm_to_original_state. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: set_vm_to_original_state is $set_vm_to_original_state. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
 	fi
 
@@ -486,31 +486,31 @@ if [[ "$number_of_days_to_keep_backups" =~ ^[0-9]+$ ]]; then
 
 		if [ "$number_of_days_to_keep_backups" -eq 0 ]; then
 
-			echo "$(date '+%Y-%m-%d %H:%M') information: number_of_days_to_keep_backups is $number_of_days_to_keep_backups. backups will be kept indefinitely. be sure to set number_of_backups_to_keep to keep backups storage usage down." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+			echo "$(date '+%Y-%m-%d %H:%M') information: number_of_days_to_keep_backups is $number_of_days_to_keep_backups. backups will be kept indefinitely. be sure to set number_of_backups_to_keep to keep backups storage usage down." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 		else
 
-			echo "$(date '+%Y-%m-%d %H:%M') warning: number_of_days_to_keep_backups is $number_of_days_to_keep_backups. this is potentially an insufficient number of days to keep your backups." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+			echo "$(date '+%Y-%m-%d %H:%M') warning: number_of_days_to_keep_backups is $number_of_days_to_keep_backups. this is potentially an insufficient number of days to keep your backups." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 		fi
 
 	elif [ "$number_of_days_to_keep_backups" -gt 180 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') warning: number_of_days_to_keep_backups is $number_of_days_to_keep_backups. this is a long time to keep your backups." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+		echo "$(date '+%Y-%m-%d %H:%M') warning: number_of_days_to_keep_backups is $number_of_days_to_keep_backups. this is a long time to keep your backups." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	elif [ "$number_of_days_to_keep_backups" -ge 5 ] && [ "$number_of_days_to_keep_backups" -le 180 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: number_of_days_to_keep_backups is $number_of_days_to_keep_backups. this is probably a sufficient number of days to keep your backups." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: number_of_days_to_keep_backups is $number_of_days_to_keep_backups. this is probably a sufficient number of days to keep your backups." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: number_of_days_to_keep_backups is $number_of_days_to_keep_backups. this is not a valid format. expecting a number between [0 - 1000000]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: number_of_days_to_keep_backups is $number_of_days_to_keep_backups. this is not a valid format. expecting a number between [0 - 1000000]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	if [ "$send_notifications" -eq 1 ];then
 	
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: number_of_days_to_keep_backups is $number_of_days_to_keep_backups. this is not a valid format. expecting a number between [0 - 1000000]. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: number_of_days_to_keep_backups is $number_of_days_to_keep_backups. this is not a valid format. expecting a number between [0 - 1000000]. exiting."
 
 	fi
 
@@ -526,31 +526,31 @@ if [[ "$number_of_backups_to_keep" =~ ^[0-9]+$ ]]; then
 
 		if [ "$number_of_backups_to_keep" -eq 0 ]; then
 
-			echo "$(date '+%Y-%m-%d %H:%M') information: number_of_backups_to_keep is $number_of_backups_to_keep. an infinite number of backups will be kept. be sure to set number_of_days_to_keep_backups to keep backups storage usage down." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+			echo "$(date '+%Y-%m-%d %H:%M') information: number_of_backups_to_keep is $number_of_backups_to_keep. an infinite number of backups will be kept. be sure to set number_of_days_to_keep_backups to keep backups storage usage down." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 		else
 
-			echo "$(date '+%Y-%m-%d %H:%M') warning: number_of_backups_to_keep is $number_of_backups_to_keep. this is potentially an insufficient number of backups to keep." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+			echo "$(date '+%Y-%m-%d %H:%M') warning: number_of_backups_to_keep is $number_of_backups_to_keep. this is potentially an insufficient number of backups to keep." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 		fi
 
 	elif [ "$number_of_backups_to_keep" -gt 40 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') warning: number_of_backups_to_keep is $number_of_backups_to_keep. this is a lot of backups to keep." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+		echo "$(date '+%Y-%m-%d %H:%M') warning: number_of_backups_to_keep is $number_of_backups_to_keep. this is a lot of backups to keep." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	elif [ "$number_of_backups_to_keep" -ge 2 ] && [ "$number_of_backups_to_keep" -le 40 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: number_of_backups_to_keep is $number_of_backups_to_keep. this is probably a sufficient number of backups to keep." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: number_of_backups_to_keep is $number_of_backups_to_keep. this is probably a sufficient number of backups to keep." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: number_of_backups_to_keep is $number_of_backups_to_keep. this is not a valid format. expecting a number between [0 - 1000000]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: number_of_backups_to_keep is $number_of_backups_to_keep. this is not a valid format. expecting a number between [0 - 1000000]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	if [ "$send_notifications" -eq 1 ];then
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: number_of_backups_to_keep is $number_of_backups_to_keep. this is not a valid format. expecting a number between [0 - 1000000]. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: number_of_backups_to_keep is $number_of_backups_to_keep. this is not a valid format. expecting a number between [0 - 1000000]. exiting."
 
 	fi
 
@@ -564,21 +564,21 @@ if [[ "$compress_backups" =~ ^(0|1)$ ]]; then
 
 	if [ "$compress_backups" -eq 0 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: compress_backups is $compress_backups. backups will not be compressed." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: compress_backups is $compress_backups. backups will not be compressed." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	elif [ "$compress_backups" -eq 1 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: compress_backups is $compress_backups. backups will be compressed." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: compress_backups is $compress_backups. backups will be compressed." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: compress_backups is $compress_backups. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: compress_backups is $compress_backups. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	if [ "$send_notifications" -eq 1 ];then
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: compress_backups is $compress_backups. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: compress_backups is $compress_backups. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
 	fi
 
@@ -594,21 +594,21 @@ if [[ "$compare_files" =~ ^(0|1)$ ]]; then
 
 	if [ "$compare_files" -eq 0 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: compare_files is $compare_files. files will not be compared after backups." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: compare_files is $compare_files. files will not be compared after backups." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	elif [ "$compare_files" -eq 1 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: compare_files is $compare_files. files will be compared after backups." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: compare_files is $compare_files. files will be compared after backups." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: compare_files is $compare_files. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: compare_files is $compare_files. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	if [ "$send_notifications" -eq 1 ];then
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: compare_files is $compare_files. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: compare_files is $compare_files. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
 	fi
 
@@ -622,21 +622,21 @@ if [[ "$backup_xml" =~ ^(0|1)$ ]]; then
 
 	if [ "$backup_xml" -eq 0 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') warning: backup_xml is $backup_xml. vms will not have their xml configurations backed up." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+		echo "$(date '+%Y-%m-%d %H:%M') warning: backup_xml is $backup_xml. vms will not have their xml configurations backed up." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	elif [ "$backup_xml" -eq 1 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: backup_xml is $backup_xml. vms will have their xml configurations backed up." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: backup_xml is $backup_xml. vms will have their xml configurations backed up." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: backup_xml is $backup_xml. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: backup_xml is $backup_xml. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	if [ "$send_notifications" -eq 1 ];then
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: backup_xml is $backup_xml. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: backup_xml is $backup_xml. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
 	fi
 
@@ -650,21 +650,21 @@ if [[ "$backup_nvram" =~ ^(0|1)$ ]]; then
 
 	if [ "$backup_nvram" -eq 0 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') warning: backup_nvram is $backup_nvram. vms will not have their nvram backed up." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+		echo "$(date '+%Y-%m-%d %H:%M') warning: backup_nvram is $backup_nvram. vms will not have their nvram backed up." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	elif [ "$backup_nvram" -eq 1 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: backup_nvram is $backup_nvram. vms will have their nvram backed up." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: backup_nvram is $backup_nvram. vms will have their nvram backed up." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: backup_nvram is $backup_nvram. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: backup_nvram is $backup_nvram. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	if [ "$send_notifications" -eq 1 ];then
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: backup_nvram is $backup_nvram. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: backup_nvram is $backup_nvram. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
 	fi
 
@@ -678,23 +678,23 @@ if [[ "$backup_vdisks" =~ ^(0|1)$ ]]; then
 
 	if [ "$backup_vdisks" -eq 0 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') warning: backup_vdisks is $backup_vdisks. vms will not have their vdisks backed up. compression will be set to off." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+		echo "$(date '+%Y-%m-%d %H:%M') warning: backup_vdisks is $backup_vdisks. vms will not have their vdisks backed up. compression will be set to off." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 		compress_backups="0"
 
 	elif [ "$backup_vdisks" -eq 1 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: backup_vdisks is $backup_vdisks. vms will have their vdisks backed up." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: backup_vdisks is $backup_vdisks. vms will have their vdisks backed up." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: backup_vdisks is $backup_vdisks. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: backup_vdisks is $backup_vdisks. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	if [ "$send_notifications" -eq 1 ];then
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: backup_vdisks is $backup_vdisks. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: backup_vdisks is $backup_vdisks. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
 	fi
 
@@ -708,21 +708,21 @@ if [[ "$start_vm_after_backup" =~ ^(0|1)$ ]]; then
 
 	if [ "$start_vm_after_backup" -eq 0 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: start_vm_after_backup is $start_vm_after_backup. vms will not be started following successfull backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: start_vm_after_backup is $start_vm_after_backup. vms will not be started following successfull backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	elif [ "$start_vm_after_backup" -eq 1 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: start_vm_after_backup is $start_vm_after_backup vms will be started following a successfull backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: start_vm_after_backup is $start_vm_after_backup vms will be started following a successfull backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: start_vm_after_backup is $start_vm_after_backup. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: start_vm_after_backup is $start_vm_after_backup. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	if [ "$send_notifications" -eq 1 ];then
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: start_vm_after_backup is $start_vm_after_backup. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: start_vm_after_backup is $start_vm_after_backup. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
 	fi
 
@@ -736,21 +736,21 @@ if [[ "$start_vm_after_failure" =~ ^(0|1)$ ]]; then
 
 	if [ "$start_vm_after_failure" -eq 0 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: start_vm_after_failure is $start_vm_after_failure. vms will not be started following an unsuccessfull backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: start_vm_after_failure is $start_vm_after_failure. vms will not be started following an unsuccessfull backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	elif [ "$start_vm_after_failure" -eq 1 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: start_vm_after_failure is $start_vm_after_failure. vms will be started following an unsuccessfull backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: start_vm_after_failure is $start_vm_after_failure. vms will be started following an unsuccessfull backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: start_vm_after_failure is $start_vm_after_failure. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: start_vm_after_failure is $start_vm_after_failure. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	if [ "$send_notifications" -eq 1 ];then
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: start_vm_after_failure is $start_vm_after_failure. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: start_vm_after_failure is $start_vm_after_failure. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
 	fi
 
@@ -764,21 +764,21 @@ if [[ "$disable_delta_sync" =~ ^(0|1)$ ]]; then
 
 	if [ "$disable_delta_sync" -eq 0 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: disable_delta_sync is $disable_delta_sync. rsync will be used to perform delta sync backups." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: disable_delta_sync is $disable_delta_sync. rsync will be used to perform delta sync backups." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	elif [ "$disable_delta_sync" -eq 1 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: disable_delta_sync is $disable_delta_sync. no delta syncs will be done." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: disable_delta_sync is $disable_delta_sync. no delta syncs will be done." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: disable_delta_sync is $disable_delta_sync. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: disable_delta_sync is $disable_delta_sync. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	if [ "$send_notifications" -eq 1 ];then
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: disable_delta_sync is $disable_delta_sync. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: disable_delta_sync is $disable_delta_sync. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
 	fi
 
@@ -792,21 +792,21 @@ if [[ "$rsync_only" =~ ^(0|1)$ ]]; then
 
 	if [ "$rsync_only" -eq 0 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: rsync_only is $rsync_only. cp will be used when applicable." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: rsync_only is $rsync_only. cp will be used when applicable." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	elif [ "$rsync_only" -eq 1 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: rsync_only is $rsync_only. only rsync will be used." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: rsync_only is $rsync_only. only rsync will be used." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: rsync_only is $rsync_only. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: rsync_only is $rsync_only. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	if [ "$send_notifications" -eq 1 ];then
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: rsync_only is $rsync_only. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: rsync_only is $rsync_only. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
 	fi
 
@@ -820,24 +820,24 @@ if [[ "$actually_copy_files" =~ ^(0|1)$ ]]; then
 
 	if [ "$actually_copy_files" -eq 0 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') warning: actually_copy_files flag is $actually_copy_files. no files will be coppied." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+		echo "$(date '+%Y-%m-%d %H:%M') warning: actually_copy_files flag is $actually_copy_files. no files will be coppied." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 		# create a variable which tells rsync to do a dry-run.
 		rsync_dry_run_option="n"
 
 	elif [ "$actually_copy_files" -eq 1 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: actually_copy_files is $actually_copy_files. files will be coppied." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: actually_copy_files is $actually_copy_files. files will be coppied." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: actually_copy_files is $actually_copy_files. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: actually_copy_files is $actually_copy_files. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	if [ "$send_notifications" -eq 1 ];then
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: actually_copy_files is $actually_copy_files. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: actually_copy_files is $actually_copy_files. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
 	fi
 
@@ -851,25 +851,25 @@ if [[ "$clean_shutdown_checks" =~ ^[0-9]+$ ]]; then
 
 	if [ "$clean_shutdown_checks" -lt 5 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') warning: clean_shutdown_checks is $clean_shutdown_checks. this is potentially an insufficient number of shutdown checks." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+		echo "$(date '+%Y-%m-%d %H:%M') warning: clean_shutdown_checks is $clean_shutdown_checks. this is potentially an insufficient number of shutdown checks." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	elif [ "$clean_shutdown_checks" -gt 50 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') warning: clean_shutdown_checks is $clean_shutdown_checks. this is a vast number of shutdown checks." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+		echo "$(date '+%Y-%m-%d %H:%M') warning: clean_shutdown_checks is $clean_shutdown_checks. this is a vast number of shutdown checks." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	elif [ "$clean_shutdown_checks" -ge 5 ] && [ "$clean_shutdown_checks" -le 50 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: clean_shutdown_checks is $clean_shutdown_checks. this is probably a sufficient number of shutdown checks." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: clean_shutdown_checks is $clean_shutdown_checks. this is probably a sufficient number of shutdown checks." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: clean_shutdown_checks is $clean_shutdown_checks. this is not a valid format. expecting a number between [0 - 1000000]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: clean_shutdown_checks is $clean_shutdown_checks. this is not a valid format. expecting a number between [0 - 1000000]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	if [ "$send_notifications" -eq 1 ];then
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: clean_shutdown_checks is $clean_shutdown_checks. this is not a valid format. expecting a number between [0 - 1000000]. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: clean_shutdown_checks is $clean_shutdown_checks. this is not a valid format. expecting a number between [0 - 1000000]. exiting."
 
 	fi
 
@@ -883,25 +883,25 @@ if [[ "$seconds_to_wait" =~ ^[0-9]+$ ]]; then
 
 	if [ "$seconds_to_wait" -lt 30 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') warning: seconds_to_wait is $seconds_to_wait. this is potentially an insufficient number of seconds to wait between shutdown checks." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+		echo "$(date '+%Y-%m-%d %H:%M') warning: seconds_to_wait is $seconds_to_wait. this is potentially an insufficient number of seconds to wait between shutdown checks." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	elif [ "$seconds_to_wait" -gt 600 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') warning: seconds_to_wait is $seconds_to_wait. this is a vast number of seconds to wait between shutdown checks." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+		echo "$(date '+%Y-%m-%d %H:%M') warning: seconds_to_wait is $seconds_to_wait. this is a vast number of seconds to wait between shutdown checks." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	elif [ "$seconds_to_wait" -ge 30 ] && [ "$seconds_to_wait" -le 600 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: seconds_to_wait is $seconds_to_wait. this is probably a sufficent number of seconds to wait between shutdown checks." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: seconds_to_wait is $seconds_to_wait. this is probably a sufficent number of seconds to wait between shutdown checks." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: seconds_to_wait is $seconds_to_wait. this is not a valid format. expecting a number between [0 - 1000000]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: seconds_to_wait is $seconds_to_wait. this is not a valid format. expecting a number between [0 - 1000000]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	if [ "$send_notifications" -eq 1 ];then
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: seconds_to_wait is $seconds_to_wait. this is not a valid format. expecting a number between [0 - 1000000]. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: seconds_to_wait is $seconds_to_wait. this is not a valid format. expecting a number between [0 - 1000000]. exiting."
 
 	fi
 
@@ -915,21 +915,21 @@ if [[ "$keep_error_log_file" =~ ^(0|1)$ ]]; then
 
 	if [ "$keep_error_log_file" -eq 0 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: keep_error_log_file is $keep_error_log_file. error log files will not be kept." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: keep_error_log_file is $keep_error_log_file. error log files will not be kept." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	elif  [ "$keep_error_log_file" -eq 1 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: keep_error_log_file is $keep_error_log_file. error log files will be kept." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: keep_error_log_file is $keep_error_log_file. error log files will be kept." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: keep_error_log_file is $keep_error_log_file. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: keep_error_log_file is $keep_error_log_file. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	if [ "$send_notifications" -eq 1 ];then
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: keep_error_log_file is $keep_error_log_file. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: keep_error_log_file is $keep_error_log_file. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
 	fi
 
@@ -945,31 +945,31 @@ if [[ "$number_of_error_log_files_to_keep" =~ ^[0-9]+$ ]]; then
 
 		if [ "$number_of_error_log_files_to_keep" -eq 0 ]; then
 
-			echo "$(date '+%Y-%m-%d %H:%M') information: number_of_error_log_files_to_keep is $number_of_error_log_files_to_keep. an infinite number of error log files will be kept. be sure to pay attention to how many error log files there are." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+			echo "$(date '+%Y-%m-%d %H:%M') information: number_of_error_log_files_to_keep is $number_of_error_log_files_to_keep. an infinite number of error log files will be kept. be sure to pay attention to how many error log files there are." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 		else
 
-			echo "$(date '+%Y-%m-%d %H:%M') warning: number_of_error_log_files_to_keep is $number_of_error_log_files_to_keep. this is potentially an insufficient number of error log files to keep." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+			echo "$(date '+%Y-%m-%d %H:%M') warning: number_of_error_log_files_to_keep is $number_of_error_log_files_to_keep. this is potentially an insufficient number of error log files to keep." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 		fi
 
 	elif [ "$number_of_error_log_files_to_keep" -gt 40 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: number_of_error_log_files_to_keep is $number_of_error_log_files_to_keep. this is a error lot of log files to keep." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: number_of_error_log_files_to_keep is $number_of_error_log_files_to_keep. this is a error lot of log files to keep." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	elif [ "$number_of_error_log_files_to_keep" -ge 2 ] && [ "$number_of_error_log_files_to_keep" -le 40 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: number_of_error_log_files_to_keep is $number_of_error_log_files_to_keep. this is probably a sufficient error number of log files to keep." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: number_of_error_log_files_to_keep is $number_of_error_log_files_to_keep. this is probably a sufficient error number of log files to keep." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: number_of_error_log_files_to_keep is $number_of_error_log_files_to_keep. this is not a valid format. expecting a number between [0 - 1000000]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: number_of_error_log_files_to_keep is $number_of_error_log_files_to_keep. this is not a valid format. expecting a number between [0 - 1000000]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 	if [ "$send_notifications" -eq 1 ];then
 
-		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: number_of_error_log_files_to_keep is $number_of_error_log_files_to_keep. this is not a valid format. expecting a number between [0 - 1000000]. exiting."
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: number_of_error_log_files_to_keep is $number_of_error_log_files_to_keep. this is not a valid format. expecting a number between [0 - 1000000]. exiting."
 
 	fi
 
@@ -985,19 +985,19 @@ if [[ "$enable_btrfs_snapshots" =~ ^(0|1)$ ]]; then
 
 	if [ "$enable_btrfs_snapshots" -eq 0 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: enable_btrfs_snapshots is $enable_btrfs_snapshots. btrfs snapshots are not enabled. this is normal, do not enable unless you know what you're doing." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: enable_btrfs_snapshots is $enable_btrfs_snapshots. btrfs snapshots are not enabled. this is normal, do not enable unless you know what you're doing." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	elif  [ "$enable_btrfs_snapshots" -eq 1 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: enable_btrfs_snapshots is $enable_btrfs_snapshots. btrfs snapshots are enabled." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: enable_btrfs_snapshots is $enable_btrfs_snapshots. btrfs snapshots are enabled." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
 else
 
-	echo "$(date '+%Y-%m-%d %H:%M') failure: enable_btrfs_snapshots is $enable_btrfs_snapshots. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+	echo "$(date '+%Y-%m-%d %H:%M') failure: enable_btrfs_snapshots is $enable_btrfs_snapshots. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
-	/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "unRAID VM Backup script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: enable_btrfs_snapshots is $enable_btrfs_snapshots. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
+	/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshots_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: enable_btrfs_snapshots is $enable_btrfs_snapshots. this is not a valid format. expecting [0 = no] or [1 = yes]. exiting."
 
 	exit 1
 
@@ -1007,21 +1007,7 @@ fi
 # remove the trailing slash from btrfs subvolume path if it exists.
 btrfs_subvolume=${btrfs_subvolume%/}
 
-
-echo "$(date '+%Y-%m-%d %H:%M') information: started attempt to backup $vms_to_backup to $backup_location" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
-
-
-# set this to force the for loop to split on new lines and not spaces.
-IFS=$'\n'
-
-
-
-
-
-
-
-# remove the trailing slash from btrfs subvolume path if it exists.
-btrfs_subvolume="/mnt/user/domains"
+echo "$(date '+%Y-%m-%d %H:%M') information: started attempt to backup $vms_to_backup to $backup_location" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 # set this to force the for loop to split on new lines and not spaces.
 IFS=$'\n'
@@ -1029,51 +1015,30 @@ IFS=$'\n'
 # function to see if the subvolume is a btrfs subvolume
 is_btrfs_subvolume() {
     local _dir=$1
-    [ "$(stat -f --format="%T" "$_dir")" == "btrfs" ] || return 1
-    inode="$(stat --format="%i" "$_dir")"
-    case "$inode" in
-        2|256)
-        echo "0"
-            return 0;;
-        *)
-        echo "1"
-            return 1;;
-    esac
+	if [ "$(stat -f --format="%T" "$_dir")" == "btrfs" ]; then
+		echo "filesystem is btrfs"
+		inode="$(stat --format="%i" "$_dir")"
+		case "$inode" in
+			2|256)
+			echo "dir is subvolume"
+				return 0;;
+			*)
+				echo "dir is not subvolume"
+				echo "$(date '+%Y-%m-%d %H:%M') failure: directory is not a subvolume. have you followed the directions to create a subvolume? exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
+				/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshots_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: directory is not a subvolume. have you followed the directions to create a subvolume? exiting."
+				exit 1
+				#return 1;;
+    	esac
+	else
+		echo "$(date '+%Y-%m-%d %H:%M') failure: filesystem is not btrfs. did you make sure not to use the /mnt/user/ path? exiting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
+		/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshots_failure" -s "unRAID BTRFS Snapshot script" -d "script failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: filesystem is not btrfs. did you make sure not to use the /mnt/user/ path? exiting."
+		exit 1
+	fi
 }
 
 is_btrfs_subvolume $btrfs_subvolume
 
 #$btrfs_test_result >> testresult.txt
-
-exit 0
-
-
-
-
-
-
-
-
-
-
-# function to see if the subvolume is a btrfs subvolume
-is_btrfs_subvolume() {
-    local _dir=$1
-    [ "$(stat -f --format="%T" "$_dir")" == "btrfs" ] || return 1
-    inode="$(stat --format="%i" "$_dir")"
-    case "$inode" in
-        2|256)
-            return 0;;
-        *)
-            return 1;;
-    esac
-}
-
-btrfs_test_result=is_btrfs_subvolume $btrfs_subvolume
-
-echo $btrfs_test_result >> testresult.txt
-
-exit 0
 
 
 # loop through the vms in the list and try and back up thier associated xml configurations and vdisk(s).
@@ -1109,7 +1074,7 @@ do
 	# if the skip flag was set in the previous section then we have to exit and move onto the next vm in the list.
 	if [ "$skip_vm" == "y" ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') warning: $vm can not be found on the system. skipping vm." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+		echo "$(date '+%Y-%m-%d %H:%M') warning: $vm can not be found on the system. skipping vm." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 	
 		if [ "$send_notifications" -eq 1 ]; then
 
@@ -1124,7 +1089,7 @@ do
 
 	else
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: $vm can be found on the system. attempting backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: $vm can be found on the system. attempting backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
@@ -1132,14 +1097,14 @@ do
 	# lets create a directory named after the vm within backup_location to store the backup files.
 	if [ ! -d "$backup_location/$vm" ] ; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') action: $backup_location/$vm does not exist. creating it." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') action: $backup_location/$vm does not exist. creating it." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 		# make the directory as it doesn't exist. added -v option to give a confirmation message to command line.
 		mkdir -vp "$backup_location/$vm"
 
 	else
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: $backup_location/$vm exists. continuing." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: $backup_location/$vm exists. continuing." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	fi
 
@@ -1154,7 +1119,7 @@ do
 		# check for the header in vdisks to see if there are any disks
 		if [ "$vdisks" == "Source" ]; then
 
-			echo "$(date '+%Y-%m-%d %H:%M') warning: there are no vdisk(s) associated with $vm to backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+			echo "$(date '+%Y-%m-%d %H:%M') warning: there are no vdisk(s) associated with $vm to backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 			if [ "$send_notifications" -eq 1 ]; then
 
@@ -1175,7 +1140,7 @@ do
 				# check to see if disk should be skipped.
 				if [[ "$vdisks_to_skip" == "$disk" ]]; then
 				
-					echo "$(date '+%Y-%m-%d %H:%M') information: $disk for $vm was found in vdisks_to_skip. skipping disk." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+					echo "$(date '+%Y-%m-%d %H:%M') information: $disk for $vm was found in vdisks_to_skip. skipping disk." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 					continue
 
@@ -1188,7 +1153,7 @@ do
 				# Do not use in conjunction with quemu-img conversion
 				if [ ! "${disk##*.}" == "img" ] && [ ! "${disk##*.}" == "qcow2" ]; then
 
-					echo "$(date '+%Y-%m-%d %H:%M') warning: $disk of $vm is not a vdisk. skipping." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+					echo "$(date '+%Y-%m-%d %H:%M') warning: $disk of $vm is not a vdisk. skipping." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 					
 					if [ "$send_notifications" -eq 1 ]; then
 
@@ -1214,7 +1179,7 @@ do
 				# check to see if a backup already exists for this vdisk and make a copy of it before shutting down the guest.
 				if [ -f "$newest_vdisk_file" ]; then
 
-					echo "$(date '+%Y-%m-%d %H:%M') information: copy of backup of $newest_vdisk_file vdisk to $backup_location/$vm/$timestamp$new_disk starting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+					echo "$(date '+%Y-%m-%d %H:%M') information: copy of backup of $newest_vdisk_file vdisk to $backup_location/$vm/$timestamp$new_disk starting." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 					if [ "$detailed_notifications" -eq 1 ]; then
 						
@@ -1264,11 +1229,11 @@ do
 					# send a message to the user based on whether there was an actual copy or a dry-run.
 					if [ "$actually_copy_files" -eq 0 ]; then
 
-						echo "$(date '+%Y-%m-%d %H:%M') information: dry-run copy of backup of $newest_vdisk_file vdisk to $backup_location/$vm/$timestamp$new_disk complete." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+						echo "$(date '+%Y-%m-%d %H:%M') information: dry-run copy of backup of $newest_vdisk_file vdisk to $backup_location/$vm/$timestamp$new_disk complete." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 					else
 
-						echo "$(date '+%Y-%m-%d %H:%M') information: copy of backup of $newest_vdisk_file vdisk to $backup_location/$vm/$timestamp$new_disk complete." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+						echo "$(date '+%Y-%m-%d %H:%M') information: copy of backup of $newest_vdisk_file vdisk to $backup_location/$vm/$timestamp$new_disk complete." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 						if [ "$detailed_notifications" -eq 1 ]; then
 							
@@ -1299,7 +1264,7 @@ do
 	# resume the vm if it is suspended, based on testing this should be instant but will trap later if it has not resumed.
 	if [ "$vm_state" == "paused" ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') action: $vm is $vm_state. resuming." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') action: $vm is $vm_state. resuming." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 		# resume the vm.
 		virsh resume "$vm"
@@ -1310,19 +1275,19 @@ do
 	# if the vm is running try and shut it down.
 	if [ "$vm_state" == "running" ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') action: $vm is $vm_state. shutting down." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') action: $vm is $vm_state. shutting down." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 		# attempt to cleanly shutdown the vm.
 		virsh shutdown "$vm"
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: performing $clean_shutdown_checks $seconds_to_wait second cycles waiting for $vm to shutdown cleanly" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: performing $clean_shutdown_checks $seconds_to_wait second cycles waiting for $vm to shutdown cleanly" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 		# the shutdown of the vm may last a while so we are going to check periodically based on global input variables.
 		for (( i=1; i<=clean_shutdown_checks; i++ ))
 
 		do
 
-			echo "$(date '+%Y-%m-%d %H:%M') information: clycle $i of $clean_shutdown_checks: waiting $seconds_to_wait seconds before checking if the vm has shutdown" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+			echo "$(date '+%Y-%m-%d %H:%M') information: clycle $i of $clean_shutdown_checks: waiting $seconds_to_wait seconds before checking if the vm has shutdown" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 			# wait x seconds based on how many seconds the user wants to wait between checks for a clean shutdown.
 			sleep $seconds_to_wait
@@ -1333,7 +1298,7 @@ do
 			# if the vm is running decide what to do.
 			if [ "$vm_state" == "running" ]; then
 
-				echo "$(date '+%Y-%m-%d %H:%M') information: $vm is $vm_state" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') information: $vm is $vm_state" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 				# if we have already exhausted our wait time set by the script variables then its time to do soemthing else.
 				if [ $i = "$clean_shutdown_checks" ] ; then
@@ -1341,7 +1306,7 @@ do
 					# check if the user wants to kill the vm on failure of unclean shutdown.
 					if [ "$kill_vm_if_cant_shutdown" -eq 1 ]; then
 
-						echo "$(date '+%Y-%m-%d %H:%M') action: kill_vm_if_cant_shutdown is $kill_vm_if_cant_shutdown. killing vm." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+						echo "$(date '+%Y-%m-%d %H:%M') action: kill_vm_if_cant_shutdown is $kill_vm_if_cant_shutdown. killing vm." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 						# destroy vm, based on testing this should be instant and without failure.
 						virsh destroy "$vm"
@@ -1355,7 +1320,7 @@ do
 							# set a flag to check later to indicate whether to backup this vm or not.
 							can_backup_vm="y"
 
-							echo "$(date '+%Y-%m-%d %H:%M') information: $vm is $vm_state. can_backup_vm set to $can_backup_vm" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+							echo "$(date '+%Y-%m-%d %H:%M') information: $vm is $vm_state. can_backup_vm set to $can_backup_vm" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 							break
 
@@ -1364,11 +1329,11 @@ do
 							# set a flag to check later to indicate whether to backup this vm or not.
 							can_backup_vm="n"
 
-							echo "$(date '+%Y-%m-%d %H:%M') failure: $vm is $vm_state. can_backup_vm set to $can_backup_vm" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+							echo "$(date '+%Y-%m-%d %H:%M') failure: $vm is $vm_state. can_backup_vm set to $can_backup_vm" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 							if [ "$send_notifications" -eq 1 ];then
 
-								/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "$vm backup failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M')" "failure: $vm is $vm_state. can_backup_vm set to $can_backup_vm"
+								/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshots script" -d "$vm backup failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M')" "failure: $vm is $vm_state. can_backup_vm set to $can_backup_vm"
 
 							fi
 
@@ -1380,11 +1345,11 @@ do
 						# set a flag to check later to indicate whether to backup this vm or not.
 						can_backup_vm="n"
 
-						echo "$(date '+%Y-%m-%d %H:%M') failure: $vm is $vm_state. can_backup_vm set to $can_backup_vm" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+						echo "$(date '+%Y-%m-%d %H:%M') failure: $vm is $vm_state. can_backup_vm set to $can_backup_vm" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 						if [ "$send_notifications" -eq 1 ];then
 
-							/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "$vm backup failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: $vm is $vm_state. can_backup_vm set to $can_backup_vm"
+							/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshots script" -d "$vm backup failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: $vm is $vm_state. can_backup_vm set to $can_backup_vm"
 
 						fi
 
@@ -1398,7 +1363,7 @@ do
 				# set a flag to check later to indicate whether to backup this vm or not.
 				can_backup_vm="y"
 
-				echo "$(date '+%Y-%m-%d %H:%M') information: $vm is $vm_state. can_backup_vm set to $can_backup_vm" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') information: $vm is $vm_state. can_backup_vm set to $can_backup_vm" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 				break
 
@@ -1408,11 +1373,11 @@ do
 				# set a flag to check later to indicate whether to backup this vm or not.
 				can_backup_vm="n"
 
-				echo "$(date '+%Y-%m-%d %H:%M') failure: $vm is $vm_state. can_backup_vm set to $can_backup_vm" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+				echo "$(date '+%Y-%m-%d %H:%M') failure: $vm is $vm_state. can_backup_vm set to $can_backup_vm" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 				if [ "$send_notifications" -eq 1 ];then
 
-					/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "$vm backup failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: $vm is $vm_state. can_backup_vm set to $can_backup_vm"
+					/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshots script" -d "$vm backup failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: $vm is $vm_state. can_backup_vm set to $can_backup_vm"
 
 				fi
 
@@ -1427,7 +1392,7 @@ do
 		# set a flag to check later to indicate whether to backup this vm or not.
 		can_backup_vm="y"
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: $vm is $vm_state. can_backup_vm set to $can_backup_vm" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: $vm is $vm_state. can_backup_vm set to $can_backup_vm" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 
 	# if the vm is suspended then something went wrong with the attempt to recover it earlier so do not attempt to backup.
@@ -1436,11 +1401,11 @@ do
 		# set a flag to check later to indicate whether to backup this vm or not.
 		can_backup_vm="n"
 
-		echo "$(date '+%Y-%m-%d %H:%M') failure: $vm is $vm_state. can_backup_vm set to $can_backup_vm" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+		echo "$(date '+%Y-%m-%d %H:%M') failure: $vm is $vm_state. can_backup_vm set to $can_backup_vm" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 		if [ "$send_notifications" -eq 1 ];then
 
-			/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "$vm backup failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: $vm is $vm_state. can_backup_vm set to $can_backup_vm"
+			/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshots script" -d "$vm backup failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: $vm is $vm_state. can_backup_vm set to $can_backup_vm"
 
 		fi
 
@@ -1451,11 +1416,11 @@ do
 		# set a flag to check later to indicate whether to backup this vm or not.
 		can_backup_vm="n"
 
-		echo "$(date '+%Y-%m-%d %H:%M') failure: $vm is $vm_state. can_backup_vm set to $can_backup_vm" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+		echo "$(date '+%Y-%m-%d %H:%M') failure: $vm is $vm_state. can_backup_vm set to $can_backup_vm" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 		if [ "$send_notifications" -eq 1 ];then
 
-			/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "$vm backup failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: $vm is $vm_state. can_backup_vm set to $can_backup_vm"
+			/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshots script" -d "$vm backup failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: $vm is $vm_state. can_backup_vm set to $can_backup_vm"
 
 		fi
 
@@ -1463,12 +1428,12 @@ do
 
 
 	# log if this is a dry run or not.
-	echo "$(date '+%Y-%m-%d %H:%M') action: actually_copy_files is $actually_copy_files." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+	echo "$(date '+%Y-%m-%d %H:%M') action: actually_copy_files is $actually_copy_files." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	# check whether to backup the vm or not.
 	if [[ "$can_backup_vm" == "y" ]]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') action: can_backup_vm flag is $can_backup_vm. starting backup of $vm configuration, nvram, and vdisk(s)." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') action: can_backup_vm flag is $can_backup_vm. starting backup of $vm configuration, nvram, and vdisk(s)." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 		if [ "$detailed_notifications" -eq 1 ]; then
 			
@@ -1511,7 +1476,7 @@ do
 
 					if ! cmp -s "$vm.xml" "$backup_location/$vm/$vm.xml"; then
 
-						echo "$(date '+%Y-%m-%d %H:%M') warning: $vm xml backup file is different than source file. retrying backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+						echo "$(date '+%Y-%m-%d %H:%M') warning: $vm xml backup file is different than source file. retrying backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 						if [ "$send_notifications" -eq 1 ]; then
 
@@ -1537,7 +1502,7 @@ do
 
 						if ! cmp -s "$vm.xml" "$backup_location/$vm/$vm.xml"; then
 
-							echo "$(date '+%Y-%m-%d %H:%M') failure: $vm xml backup file failed second comparison." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+							echo "$(date '+%Y-%m-%d %H:%M') failure: $vm xml backup file failed second comparison." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 					
 							if [ "$send_notifications" -eq 1 ]; then
 
@@ -1547,13 +1512,13 @@ do
 
 						else
 
-							echo "$(date '+%Y-%m-%d %H:%M') information: $vm xml backup file passed second comparison. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+							echo "$(date '+%Y-%m-%d %H:%M') information: $vm xml backup file passed second comparison. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 						fi
 
 					else
 
-						echo "$(date '+%Y-%m-%d %H:%M') information: $vm xml backup file matches source file. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+						echo "$(date '+%Y-%m-%d %H:%M') information: $vm xml backup file matches source file. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 					fi
 
@@ -1583,7 +1548,7 @@ do
 
 					if ! cmp -s "$vm.xml" "$backup_location/$vm/$timestamp$vm.xml"; then
 
-						echo "$(date '+%Y-%m-%d %H:%M') warning: $vm xml backup file is different than source file. retrying backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+						echo "$(date '+%Y-%m-%d %H:%M') warning: $vm xml backup file is different than source file. retrying backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 					
 						if [ "$send_notifications" -eq 1 ]; then
 
@@ -1609,7 +1574,7 @@ do
 
 						if ! cmp -s "$vm.xml" "$backup_location/$vm/$timestamp$vm.xml"; then
 
-							echo "$(date '+%Y-%m-%d %H:%M') failure: $vm xml backup file failed second comparison." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+							echo "$(date '+%Y-%m-%d %H:%M') failure: $vm xml backup file failed second comparison." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 							if [ "$send_notifications" -eq 1 ]; then
 
@@ -1619,13 +1584,13 @@ do
 
 						else
 
-							echo "$(date '+%Y-%m-%d %H:%M') information: $vm xml backup file passed second comparison. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+							echo "$(date '+%Y-%m-%d %H:%M') information: $vm xml backup file passed second comparison. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 						fi
 
 					else
 
-						echo "$(date '+%Y-%m-%d %H:%M') information: $vm xml backup file matches source file. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+						echo "$(date '+%Y-%m-%d %H:%M') information: $vm xml backup file matches source file. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 					fi
 
@@ -1640,11 +1605,11 @@ do
 			# send a message to the user based on whether there was an actual copy or a dry-run.
 			if [ "$actually_copy_files" -eq 0 ]; then
 
-				echo "$(date '+%Y-%m-%d %H:%M') information: dry-run backup of $vm xml configuration to $backup_location/$vm/$timestamp$vm.xml complete." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') information: dry-run backup of $vm xml configuration to $backup_location/$vm/$timestamp$vm.xml complete." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 			else
 
-				echo "$(date '+%Y-%m-%d %H:%M') information: backup of $vm xml configuration to $backup_location/$vm/$timestamp$vm.xml complete." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') information: backup of $vm xml configuration to $backup_location/$vm/$timestamp$vm.xml complete." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 			fi
 			
@@ -1669,7 +1634,7 @@ do
 			# check to see if nvram_path is empty.
 			if [ -z "$nvram_path" ]; then
 
-				echo "$(date '+%Y-%m-%d %H:%M') information: $vm does not appear to have an nvram file. skipping." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') information: $vm does not appear to have an nvram file. skipping." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 			else
 
@@ -1698,7 +1663,7 @@ do
 
 						if ! cmp -s "$nvram_path" "$backup_location/$vm/$nvram_filename"; then
 
-							echo "$(date '+%Y-%m-%d %H:%M') warning: $vm nvram backup file is different than source file. retrying backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+							echo "$(date '+%Y-%m-%d %H:%M') warning: $vm nvram backup file is different than source file. retrying backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 							if [ "$send_notifications" -eq 1 ]; then
 
@@ -1724,7 +1689,7 @@ do
 
 							if ! cmp -s "$nvram_path" "$backup_location/$vm/$nvram_filename"; then
 
-								echo "$(date '+%Y-%m-%d %H:%M') failure: $vm nvram backup file failed second comparison." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+								echo "$(date '+%Y-%m-%d %H:%M') failure: $vm nvram backup file failed second comparison." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 						
 								if [ "$send_notifications" -eq 1 ]; then
 
@@ -1734,13 +1699,13 @@ do
 
 							else
 
-								echo "$(date '+%Y-%m-%d %H:%M') information: $vm nvram backup file passed second comparison. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+								echo "$(date '+%Y-%m-%d %H:%M') information: $vm nvram backup file passed second comparison. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 							fi
 
 						else
 
-							echo "$(date '+%Y-%m-%d %H:%M') information: $vm nvram backup file matches source file. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+							echo "$(date '+%Y-%m-%d %H:%M') information: $vm nvram backup file matches source file. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 						fi
 
@@ -1770,7 +1735,7 @@ do
 
 						if ! cmp -s "$nvram_path" "$backup_location/$vm/$timestamp$nvram_filename"; then
 
-							echo "$(date '+%Y-%m-%d %H:%M') warning: $vm nvram backup file is different than source file. retrying backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+							echo "$(date '+%Y-%m-%d %H:%M') warning: $vm nvram backup file is different than source file. retrying backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 						
 							if [ "$send_notifications" -eq 1 ]; then
 
@@ -1796,7 +1761,7 @@ do
 
 							if ! cmp -s "$nvram_path" "$backup_location/$vm/$timestamp$nvram_filename"; then
 
-								echo "$(date '+%Y-%m-%d %H:%M') failure: $vm nvram backup file failed second comparison." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+								echo "$(date '+%Y-%m-%d %H:%M') failure: $vm nvram backup file failed second comparison." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 								if [ "$send_notifications" -eq 1 ]; then
 
@@ -1806,13 +1771,13 @@ do
 
 							else
 
-								echo "$(date '+%Y-%m-%d %H:%M') information: $vm nvram backup file passed second comparison. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+								echo "$(date '+%Y-%m-%d %H:%M') information: $vm nvram backup file passed second comparison. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 							fi
 
 						else
 
-							echo "$(date '+%Y-%m-%d %H:%M') information: $vm nvram backup file matches source file. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+							echo "$(date '+%Y-%m-%d %H:%M') information: $vm nvram backup file matches source file. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 						fi
 
@@ -1823,11 +1788,11 @@ do
 				# send a message to the user based on whether there was an actual copy or a dry-run.
 				if [ "$actually_copy_files" -eq 0 ]; then
 
-					echo "$(date '+%Y-%m-%d %H:%M') information: dry-run backup of $vm nvram to $backup_location/$vm/$timestamp$nvram_filename complete." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+					echo "$(date '+%Y-%m-%d %H:%M') information: dry-run backup of $vm nvram to $backup_location/$vm/$timestamp$nvram_filename complete." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 				else
 
-					echo "$(date '+%Y-%m-%d %H:%M') information: backup of $vm nvram to $backup_location/$vm/$timestamp$nvram_filename complete." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+					echo "$(date '+%Y-%m-%d %H:%M') information: backup of $vm nvram to $backup_location/$vm/$timestamp$nvram_filename complete." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 				fi
 
@@ -1846,7 +1811,7 @@ do
 			# check for the header in vdisks to see if there are any disks
 			if [ "$vdisks" == "Source" ]; then
 
-				echo "$(date '+%Y-%m-%d %H:%M') warning: there are no vdisk(s) associated with $vm to backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+				echo "$(date '+%Y-%m-%d %H:%M') warning: there are no vdisk(s) associated with $vm to backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 				if [ "$send_notifications" -eq 1 ]; then
 
@@ -1871,7 +1836,7 @@ do
 					# Do not use in conjunction with quemu-img conversion
 					if [ ! "${disk##*.}" == "img" ] && [ ! "${disk##*.}" == "qcow2" ]; then
 
-						echo "$(date '+%Y-%m-%d %H:%M') warning: $disk of $vm is not a vdisk. skipping." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+						echo "$(date '+%Y-%m-%d %H:%M') warning: $disk of $vm is not a vdisk. skipping." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 						if [ "$send_notifications" -eq 1 ]; then
 
@@ -1916,7 +1881,7 @@ do
 
 							if ! cmp -s "$disk" "$backup_location/$vm/$new_disk"; then
 
-								echo "$(date '+%Y-%m-%d %H:%M') warning: $vm vdisk backup file is different than source file. attempting slower rsync backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+								echo "$(date '+%Y-%m-%d %H:%M') warning: $vm vdisk backup file is different than source file. attempting slower rsync backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 								if [ "$send_notifications" -eq 1 ]; then
 
@@ -1942,7 +1907,7 @@ do
 
 								if ! cmp -s "$disk" "$backup_location/$vm/$new_disk"; then
 
-									echo "$(date '+%Y-%m-%d %H:%M') failure: $vm vdisk backup file failed second comparison." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+									echo "$(date '+%Y-%m-%d %H:%M') failure: $vm vdisk backup file failed second comparison." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 									if [ "$send_notifications" -eq 1 ]; then
 
@@ -1952,13 +1917,13 @@ do
 
 								else
 
-									echo "$(date '+%Y-%m-%d %H:%M') information: $vm vdisk backup file passed second comparison. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+									echo "$(date '+%Y-%m-%d %H:%M') information: $vm vdisk backup file passed second comparison. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 								fi
 
 							else
 
-								echo "$(date '+%Y-%m-%d %H:%M') information: $vm vdisk backup file matches source file. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+								echo "$(date '+%Y-%m-%d %H:%M') information: $vm vdisk backup file matches source file. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 							fi
 
@@ -2030,7 +1995,7 @@ do
 
 							if ! cmp -s "$disk" "$backup_location/$vm/$timestamp$new_disk"; then
 
-								echo "$(date '+%Y-%m-%d %H:%M') warning: $vm vdisk backup file is different than source file. attempting slower rsync backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+								echo "$(date '+%Y-%m-%d %H:%M') warning: $vm vdisk backup file is different than source file. attempting slower rsync backup." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 								if [ "$send_notifications" -eq 1 ]; then
 
@@ -2056,7 +2021,7 @@ do
 
 								if ! cmp -s "$disk" "$backup_location/$vm/$timestamp$new_disk"; then
 
-									echo "$(date '+%Y-%m-%d %H:%M') failure: $vm vdisk backup file failed second comparison." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+									echo "$(date '+%Y-%m-%d %H:%M') failure: $vm vdisk backup file failed second comparison." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 									if [ "$send_notifications" -eq 1 ]; then
 
@@ -2066,13 +2031,13 @@ do
 
 								else
 
-									echo "$(date '+%Y-%m-%d %H:%M') information: $vm vdisk backup file passed second comparison. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+									echo "$(date '+%Y-%m-%d %H:%M') information: $vm vdisk backup file passed second comparison. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 								fi
 
 							else
 
-								echo "$(date '+%Y-%m-%d %H:%M') information: $vm vdisk backup file matches source file. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+								echo "$(date '+%Y-%m-%d %H:%M') information: $vm vdisk backup file matches source file. moving on." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 							fi
 
@@ -2083,11 +2048,11 @@ do
 					# send a message to the user based on whether there was an actual copy or a dry-run.
 					if [ "$actually_copy_files" -eq 0 ]; then
 
-						echo "$(date '+%Y-%m-%d %H:%M') information: dry-run backup of $new_disk vdisk to $backup_location/$vm/$timestamp$new_disk complete." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+						echo "$(date '+%Y-%m-%d %H:%M') information: dry-run backup of $new_disk vdisk to $backup_location/$vm/$timestamp$new_disk complete." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 					else
 
-						echo "$(date '+%Y-%m-%d %H:%M') information: backup of $new_disk vdisk to $backup_location/$vm/$timestamp$new_disk complete." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+						echo "$(date '+%Y-%m-%d %H:%M') information: backup of $new_disk vdisk to $backup_location/$vm/$timestamp$new_disk complete." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 					fi
 
@@ -2102,7 +2067,7 @@ do
 		if [ "$set_vm_to_original_state" -eq 1 ]; then
 			# start the vm after backup based on previous state.
 			if [ "$vm_original_state" == "running" ]; then
-				echo "$(date '+%Y-%m-%d %H:%M') action: vm_original_state is $vm_original_state. starting $vm." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') action: vm_original_state is $vm_original_state. starting $vm." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 				if [ "$detailed_notifications" -eq 1 ]; then
 					
@@ -2119,7 +2084,7 @@ do
 
 			else
 
-				echo "$(date '+%Y-%m-%d %H:%M') information: vm_original_state is $vm_original_state. not starting $vm." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') information: vm_original_state is $vm_original_state. not starting $vm." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 				if [ "$detailed_notifications" -eq 1 ]; then
 				
@@ -2138,7 +2103,7 @@ do
 		# if start_vm_after_backup is set to 1 then start the vm but dont check that it has been successfull.
 		if [ "$start_vm_after_backup" -eq 1 ]; then
 
-			echo "$(date '+%Y-%m-%d %H:%M') action: start_vm_after_backup is $start_vm_after_backup. starting $vm." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+			echo "$(date '+%Y-%m-%d %H:%M') action: start_vm_after_backup is $start_vm_after_backup. starting $vm." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 			if [ "$detailed_notifications" -eq 1 ]; then
 				
@@ -2164,27 +2129,27 @@ do
 				# make sure new image files exist before removing existing tarball
 				if [[ -n $(find "$backup_location/$vm/" -type f \( -name "*.img" -or -name "*.qcow2" \) ) ]] && [[ -n $(find "$backup_location/$vm" -type f \( -name "*.xml" \) ) ]]; then
 
-					echo "$(date '+%Y-%m-%d %H:%M') information: found new image files. removing existing tarball." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+					echo "$(date '+%Y-%m-%d %H:%M') information: found new image files. removing existing tarball." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 					# remove existing tarball
-					rm -fv "$backup_location/$vm/"*.tar.gz | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+					rm -fv "$backup_location/$vm/"*.tar.gz | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 					# create new compressed tarball with latest backup.
 					
-					echo "$(date '+%Y-%m-%d %H:%M') information: started creating new tarball." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+					echo "$(date '+%Y-%m-%d %H:%M') information: started creating new tarball." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 					tar zcvSf "$backup_location/$vm/$vm.tar.gz" "$backup_location/$vm/"*.{xml,fd,img,qcow2}
 
-					echo "$(date '+%Y-%m-%d %H:%M') information: finished creating new tarball." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+					echo "$(date '+%Y-%m-%d %H:%M') information: finished creating new tarball." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 					
 					# remove xml, nvram, and image files.
 					find "$backup_location/$vm/" -type f \( -name "*.xml" -or -name "*.fd" -or -name "*.img" -or -name "*.qcow2" \) -exec rm -fv {} \;
 
-					echo "$(date '+%Y-%m-%d %H:%M') information: removing xml, nvram, and image files after tarball." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+					echo "$(date '+%Y-%m-%d %H:%M') information: removing xml, nvram, and image files after tarball." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 				else
 
-					echo "$(date '+%Y-%m-%d %H:%M') warning: could not find new image and/or xml files. backup may have failed. not removing existing tarball." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+					echo "$(date '+%Y-%m-%d %H:%M') warning: could not find new image and/or xml files. backup may have failed. not removing existing tarball." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 					if [ "$send_notifications" -eq 1 ]; then
 
@@ -2198,16 +2163,16 @@ do
 
 				# create compressed tarball with ALL xml, nvram, and image files.
 
-				echo "$(date '+%Y-%m-%d %H:%M') information: started creating new tarball." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') information: started creating new tarball." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 				tar zcvSf "$backup_location/$vm/$timestamp$vm.tar.gz" "$backup_location/$vm/"*.{xml,fd,img,qcow2}
 
-				echo "$(date '+%Y-%m-%d %H:%M') information: finished creating new tarball." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') information: finished creating new tarball." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 				
 				# remove xml, nvram, and image files.
 				find "$backup_location/$vm/" -type f \( -name "*.xml" -or -name "*.fd" -or -name "*.img" -or -name "*.qcow2" \) -exec rm -fv {} \;
 
-				echo "$(date '+%Y-%m-%d %H:%M') information: removing xml, nvram, and image files after tarball." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') information: removing xml, nvram, and image files after tarball." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 			fi
 
@@ -2217,7 +2182,7 @@ do
 
 		# start the vm based on previous state.
 		if [ "$vm_original_state" == "running" ]; then
-			echo "$(date '+%Y-%m-%d %H:%M') action: vm_original_state is $vm_original_state. starting $vm." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+			echo "$(date '+%Y-%m-%d %H:%M') action: vm_original_state is $vm_original_state. starting $vm." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 			if [ "$detailed_notifications" -eq 1 ]; then
 				
@@ -2234,7 +2199,7 @@ do
 
 		else
 
-			echo "$(date '+%Y-%m-%d %H:%M') information: vm_original_state is $vm_original_state. not starting $vm." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+			echo "$(date '+%Y-%m-%d %H:%M') information: vm_original_state is $vm_original_state. not starting $vm." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 			if [ "$detailed_notifications" -eq 1 ]; then
 				
@@ -2249,11 +2214,11 @@ do
 		fi
 
 		# for whatever reason the backup attempt failed.
-		echo "$(date '+%Y-%m-%d %H:%M') failure: backup of $vm to $backup_location/$vm failed." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" && errors="1"
+		echo "$(date '+%Y-%m-%d %H:%M') failure: backup of $vm to $backup_location/$vm failed." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log" && errors="1"
 
 		if [ "$send_notifications" -eq 1 ];then
 
-			/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_failure" -s "unRAID VM Backup script" -d "backup of $vm failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: backup of $vm to $backup_location/$vm failed."
+			/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-btrfssnapshot_failure" -s "unRAID BTRFS Snapshots script" -d "backup of $vm failed" -i "alert" -m "$(date '+%Y-%m-%d %H:%M') failure: backup of $vm to $backup_location/$vm failed."
 
 		fi
 
@@ -2261,7 +2226,7 @@ do
 		# if start_vm_after_failure is set to 1 then start the vm but dont check that it has been successfull.
 		if [ "$start_vm_after_failure" -eq 1 ]; then
 
-			echo "$(date '+%Y-%m-%d %H:%M') action: start_vm_after_failure is $start_vm_after_failure starting $vm." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+			echo "$(date '+%Y-%m-%d %H:%M') action: start_vm_after_failure is $start_vm_after_failure starting $vm." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 			if [ "$detailed_notifications" -eq 1 ]; then
 				
@@ -2281,7 +2246,7 @@ do
 	fi
 
 
-	echo "$(date '+%Y-%m-%d %H:%M') information: backup of $vm to $backup_location/$vm completed." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+	echo "$(date '+%Y-%m-%d %H:%M') information: backup of $vm to $backup_location/$vm completed." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	if [ "$detailed_notifications" -eq 1 ]; then
 				
@@ -2296,11 +2261,11 @@ do
 	# check to see how many days backups should be kept.
 	if [ "$number_of_days_to_keep_backups" -eq 0 ]; then
 	
-		echo "$(date '+%Y-%m-%d %H:%M') information: nubmer of days to keep backups set to indefinitely." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: nubmer of days to keep backups set to indefinitely." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	else
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: cleaning out backups older than $number_of_days_to_keep_backups days in location ONLY if newer files exist in $backup_location/$vm/" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: cleaning out backups older than $number_of_days_to_keep_backups days in location ONLY if newer files exist in $backup_location/$vm/" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 		if [ "$detailed_notifications" -eq 1 ] && [ "$send_notifications" -eq 1 ] && [ "$only_send_error_notifications" -eq 0 ]; then
 
@@ -2322,7 +2287,7 @@ do
 
 					deleted_files=$(find "$j" -type f \( -name "*.xml" \) -mmin +$((number_of_days_to_keep_backups*24*60)) -exec rm -fv {} \;)
 
-					echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+					echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 					/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_remove_xmls" -s "unRAID VM Backup script" -d "script removing xmls" -i "normal" -m "$(date '+%Y-%m-%d %H:%M') information: $deleted_files"
 
@@ -2341,7 +2306,7 @@ do
 
 					deleted_files=$(find "$j" -type f \( -name "*.fd" \) -mmin +$((number_of_days_to_keep_backups*24*60)) -exec rm -fv {} \;)
 
-					echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+					echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 					/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_remove_nvrams" -s "unRAID VM Backup script" -d "script removing nvrams" -i "normal" -m "$(date '+%Y-%m-%d %H:%M') information: $deleted_files"
 
@@ -2360,7 +2325,7 @@ do
 
 					deleted_files=$(find "$j" -type f \( -name "*.img" -or -name "*.qcow2" \) -mmin +$((number_of_days_to_keep_backups*24*60)) -exec rm -fv {} \;)
 
-					echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+					echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 					/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_remove_vdisks" -s "unRAID VM Backup script" -d "script removing vdisks" -i "normal" -m "$(date '+%Y-%m-%d %H:%M') information: $deleted_files"
 
@@ -2379,7 +2344,7 @@ do
 
 					deleted_files=$(find "$j" -type f \( -name "*.tar.gz" \) -mmin +$((number_of_days_to_keep_backups*24*60)) -exec rm -fv {} \;)
 
-					echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+					echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 					/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_remove_tarballs" -s "unRAID VM Backup script" -d "script removing tarballs" -i "normal" -m "$(date '+%Y-%m-%d %H:%M') information: $deleted_files"
 
@@ -2398,11 +2363,11 @@ do
 	# check to see how many backups should be kept.
 	if [ "$number_of_backups_to_keep" -eq 0 ]; then
 	
-		echo "$(date '+%Y-%m-%d %H:%M') information: number of backups to keep set to infinite." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: number of backups to keep set to infinite." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	else
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: cleaning out backups over $number_of_backups_to_keep in location $backup_location/$vm/" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: cleaning out backups over $number_of_backups_to_keep in location $backup_location/$vm/" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 		if [ "$detailed_notifications" -eq 1 ] && [ "$send_notifications" -eq 1 ] && [ "$only_send_error_notifications" -eq 0 ]; then
 
@@ -2420,7 +2385,7 @@ do
 
 			if [[ -n "$deleted_files" ]]; then
 			
-				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 				/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_remove_xmls" -s "unRAID VM Backup script" -d "script removing xmls" -i "normal" -m "$(date '+%Y-%m-%d %H:%M') information: $deleted_files"
 
@@ -2432,7 +2397,7 @@ do
 
 			if [[ -n "$deleted_files" ]]; then
 			
-				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 			fi
 
@@ -2445,7 +2410,7 @@ do
 
 			if [[ -n "$deleted_files" ]]; then
 			
-				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 				/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_remove_nvrams" -s "unRAID VM Backup script" -d "script removing nvrams" -i "normal" -m "$(date '+%Y-%m-%d %H:%M') information: $deleted_files"
 
@@ -2457,7 +2422,7 @@ do
 
 			if [[ -n "$deleted_files" ]]; then
 			
-				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 			fi
 		
@@ -2470,7 +2435,7 @@ do
 
 			if [[ -n "$deleted_files" ]]; then
 			
-				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 				/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_remove_vdisks" -s "unRAID VM Backup script" -d "script removing vdisks" -i "normal" -m "$(date '+%Y-%m-%d %H:%M') information: $deleted_files"
 
@@ -2482,7 +2447,7 @@ do
 
 			if [[ -n "$deleted_files" ]]; then
 			
-				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 			fi
 
@@ -2495,7 +2460,7 @@ do
 
 			if [[ -n "$deleted_files" ]]; then
 			
-				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 				/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_remove_tarballs" -s "unRAID VM Backup script" -d "script removing tarballs" -i "normal" -m "$(date '+%Y-%m-%d %H:%M') information: $deleted_files"
 
@@ -2507,7 +2472,7 @@ do
 
 			if [[ -n "$deleted_files" ]]; then
 			
-				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 			fi
 
@@ -2517,7 +2482,7 @@ do
 
 done
 
-echo "$(date '+%Y-%m-%d %H:%M') information: finished attempt to backup $vms_to_backup to $backup_location." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+echo "$(date '+%Y-%m-%d %H:%M') information: finished attempt to backup $vms_to_backup to $backup_location." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 
 # check to see if log file should be kept.
@@ -2525,11 +2490,11 @@ if [ "$keep_log_file" -eq 1 ]; then
 
 	if [ "$number_of_log_files_to_keep" -eq 0 ]; then
 	
-		echo "$(date '+%Y-%m-%d %H:%M') information: number of logs to keep set to infinite." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: number of logs to keep set to infinite." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	else
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: cleaning out logs over $number_of_log_files_to_keep." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: cleaning out logs over $number_of_log_files_to_keep." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 		# create variable equal to number_of_log_files_to_keep plus one to make sure that the correct number of files are kept.
 		log_files_plus_1=$((number_of_log_files_to_keep + 1))
@@ -2541,7 +2506,7 @@ if [ "$keep_log_file" -eq 1 ]; then
 
 			if [[ -n "$deleted_files" ]]; then
 
-				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 				/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_remove_logs" -s "unRAID VM Backup script" -d "script removing logs" -i "normal" -m "$(date '+%Y-%m-%d %H:%M') information: $deleted_files"
 
@@ -2553,7 +2518,7 @@ if [ "$keep_log_file" -eq 1 ]; then
 
 			if [[ -n "$deleted_files" ]]; then
 
-				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 			fi
 
@@ -2568,11 +2533,11 @@ if [ "$keep_error_log_file" -eq 1 ]; then
 
 	if [ "$number_of_error_log_files_to_keep" -eq 0 ]; then
 	
-		echo "$(date '+%Y-%m-%d %H:%M') information: number of error logs to keep set to infinite." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: number of error logs to keep set to infinite." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	else
 
-		echo "$(date '+%Y-%m-%d %H:%M') information: cleaning out error logs over $number_of_error_log_files_to_keep." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') information: cleaning out error logs over $number_of_error_log_files_to_keep." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 		# create variable equal to number_of_error_log_files_to_keep plus one to make sure that the correct number of files are kept.
 		error_log_files_plus_1=$((number_of_error_log_files_to_keep + 1))
@@ -2584,7 +2549,7 @@ if [ "$keep_error_log_file" -eq 1 ]; then
 
 			if [[ -n "$deleted_files" ]]; then
 
-				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 				/usr/local/emhttp/plugins/dynamix/scripts/notify -e "unraid-vmbackup_remove_error_logs" -s "unRAID VM Backup script" -d "script removing error logs" -i "normal" -m "$(date '+%Y-%m-%d %H:%M') information: $deleted_files"
 
@@ -2596,7 +2561,7 @@ if [ "$keep_error_log_file" -eq 1 ]; then
 
 			if [[ -n "$deleted_files" ]]; then
 
-				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+				echo "$(date '+%Y-%m-%d %H:%M') information: $deleted_files" | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 			fi
 
@@ -2609,7 +2574,7 @@ fi
 # check to see if there were any errors.
 if [ "$errors" -eq 1 ]; then
 
-	echo "$(date '+%Y-%m-%d %H:%M') warning: errors found. creating error log file." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+	echo "$(date '+%Y-%m-%d %H:%M') warning: errors found. creating error log file." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 	rsync -av "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log" "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup_error.log"
 
@@ -2650,7 +2615,7 @@ if [ "$keep_error_log_file" -eq 0 ]; then
 
 	if [ "$keep_log_file" -eq 1 ]; then
 
-		echo "$(date '+%Y-%m-%d %H:%M') warning: removing error log file." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+		echo "$(date '+%Y-%m-%d %H:%M') warning: removing error log file." | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 		rm -fv "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup_error.log"
 
@@ -2667,7 +2632,7 @@ fi
 ### Logging Stopped ###
 if [ "$keep_log_file" -eq 1 ]; then
 
-	echo "$(date '+%Y-%m-%d %H:%M')" " Stop logging to log file."  | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-vmbackup.log"
+	echo "$(date '+%Y-%m-%d %H:%M')" " Stop logging to log file."  | tee -a "$backup_location/$log_file_subfolder$timestamp""unraid-btrfssnapshot.log"
 
 fi
 
